@@ -21,7 +21,6 @@ jobs:
           scheme: "Textual (Standard Release)"
           destination: platform=macOS
           action: build
-          result-bundle-path: "."
       - name: List files
         run: |
           ls -al .
