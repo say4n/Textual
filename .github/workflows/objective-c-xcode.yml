@@ -15,8 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build
+        uses: sersoft-gmbh/xcodebuild-action@v2
+        with:
+          workspace: Textual.xcworkspace
+          scheme: "Textual (Standard Release)"
+          destination: platform=macOS
+          action: build
+          result-bundle-path: "."
+      - name: List files
         run: |
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build -scheme "Textual (Standard Release)" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
           ls -al .
