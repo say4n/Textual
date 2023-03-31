@@ -21,7 +21,6 @@ jobs:
         with:
           workspace: Textual.xcworkspace
           scheme: "Textual (Standard Release)"
-          destination: platform=macOS
           action: build
       - name: List files
         run: |
