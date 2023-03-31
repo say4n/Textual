@@ -8,12 +8,14 @@ on:
 
 jobs:
   build:
-    name: Build and analyse default scheme using xcodebuild command
+    name: Build and publish
     runs-on: macos-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Build
         uses: sersoft-gmbh/xcodebuild-action@v2
         with:
